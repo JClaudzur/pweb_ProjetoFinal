@@ -2,11 +2,6 @@ package br.unisul.pweb.jlc.domain;
 
 import java.io.Serializable;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,10 +28,16 @@ public class Emprestimo implements Serializable{
 	
 	
 	@ManyToOne
-	@JoinColumn(name="livro_id")
-	@ElementCollection
-	@CollectionTable(name="LIVROS")
-	private Set<Livro> livros = new HashSet<>();
+	@JoinColumn(name="livro1_id")
+	private Livro livro1;
+	
+	@ManyToOne
+	@JoinColumn(name="livro2_id")
+	private Livro livro2;
+	
+	@ManyToOne
+	@JoinColumn(name="livro3_id")
+	private Livro livro3;
 	
 	private String dataAtual;
 	private String dataDevolucao;// Calculos no service
@@ -51,9 +52,9 @@ public class Emprestimo implements Serializable{
 		this.setUser(user);
 		this.dataAtual = dataAtual;
 		this.dataDevolucao = dataDevolucao;
-		this.livros.add(livro1);
-		this.livros.add(livro2);
-		this.livros.add(livro3);
+		this.livro1 = livro1;
+		this.livro2 = livro2;
+		this.livro3 = livro3;
 	}
 	
 	
@@ -69,12 +70,31 @@ public class Emprestimo implements Serializable{
 	public void setUser(Usuario user) {
 		this.user = user;
 	}
-	public Set<Livro> getLivros() {
-		return livros;
+	
+	public Livro getLivro1() {
+		return livro1;
 	}
-	public void setLivros(Set<Livro> livros) {
-		this.livros = livros;
+
+	public void setLivro1(Livro livro1) {
+		this.livro1 = livro1;
 	}
+
+	public Livro getLivro2() {
+		return livro2;
+	}
+
+	public void setLivro2(Livro livro2) {
+		this.livro2 = livro2;
+	}
+
+	public Livro getLivro3() {
+		return livro3;
+	}
+
+	public void setLivro3(Livro livro3) {
+		this.livro3 = livro3;
+	}
+
 	public String getDataAtual() {
 		return dataAtual;
 	}
