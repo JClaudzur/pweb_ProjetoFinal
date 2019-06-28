@@ -3,10 +3,12 @@ package br.unisul.pweb.jlc.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.unisul.pweb.jlc.domain.Emprestimo;
 import br.unisul.pweb.jlc.repository.EmprestimoRepository;
 
+@Service
 public class EmprestimoService {
 
 	@Autowired

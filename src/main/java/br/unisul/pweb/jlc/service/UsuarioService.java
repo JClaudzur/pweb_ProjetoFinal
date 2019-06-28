@@ -3,10 +3,12 @@ package br.unisul.pweb.jlc.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.unisul.pweb.jlc.domain.Usuario;
 import br.unisul.pweb.jlc.repository.UsuarioRepository;
 
+@Service
 public class UsuarioService {
 
 	@Autowired

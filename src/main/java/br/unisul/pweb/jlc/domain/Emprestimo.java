@@ -1,6 +1,9 @@
 package br.unisul.pweb.jlc.domain;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,22 +43,41 @@ public class Emprestimo implements Serializable{
 	private Livro livro3;
 	
 	private String dataAtual;
-	private String dataDevolucao;// Calculos no service
-	
+	private String dataDevolucao;
 	
 	public Emprestimo() {
 		
 	}
 	
-	public Emprestimo (Integer id, Usuario user, String dataAtual, String dataDevolucao, Livro livro1, Livro livro2, Livro livro3) { 
+	public Emprestimo (Integer id, Usuario user, Livro livro1, Livro livro2, Livro livro3) { 
 		this.id = id;
 		this.setUser(user);
-		this.dataAtual = dataAtual;
-		this.dataDevolucao = dataDevolucao;
 		this.livro1 = livro1;
 		this.livro2 = livro2;
 		this.livro3 = livro3;
 	}
+	
+	
+	
+	public void InserirDataAtualDevolucao() {
+		
+		SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar hoje = new GregorianCalendar();
+		
+		setDataAtual(formatoData.format(hoje.getTime()));
+		
+		if (getUser().getTipo().equals("Aluno")) {
+			hoje.add(Calendar.DAY_OF_MONTH, 3);
+			setDataDevolucao(formatoData.format(hoje.getTime()));
+		} else 
+			if (getUser().getTipo().equals("Professor")) {
+				hoje.add(Calendar.DAY_OF_MONTH, 7);
+				setDataDevolucao(formatoData.format(hoje.getTime()));
+		}
+		
+		
+	}
+	
 	
 	
 	public Integer getId() {
