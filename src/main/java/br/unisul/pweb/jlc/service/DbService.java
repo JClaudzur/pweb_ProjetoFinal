@@ -28,9 +28,9 @@ public class DbService {
 		Usuario user1 = new Usuario(null, "Julia", "Professor", "Fem", 19);
 		Usuario user2 = new Usuario(null, "Ezra", "Aluno", "Mas", 19);
 		
-		Livro l1 = new Livro();
-		Livro l2 = new Livro();
-		Livro l3 = new Livro();
+		Livro l1 = new Livro(null, "titulo", "informatica", 10, "A3");
+		Livro l2 = new Livro(null, "titulo", "informatica", 10, "A3");
+		Livro l3 = new Livro(null, "titulo", "informatica", 10, "A3");
 		
 		Emprestimo e1 = new Emprestimo();
 		Emprestimo e2 = new Emprestimo();

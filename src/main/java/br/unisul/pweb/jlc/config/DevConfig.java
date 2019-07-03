@@ -12,19 +12,19 @@ import br.unisul.pweb.jlc.service.DbService;
 @Configuration
 public class DevConfig {
 
-	@Autowired
-	private DbService dbService;
-	
-	@Value("${spring.jpa.hibernate.ddl-auto}")
-	private String strategy;
-
-	@Bean
-	public boolean inicializaBancoDeDados() throws ParseException {
-		if (!strategy.equals("create")) {
-			return false;
-		}
-		dbService.inicializaBancoDeDados();
-		return true;
-	}
+//	@Autowired
+//	private DbService dbService;
+//	
+//	@Value("${spring.jpa.hibernate.ddl-auto}")
+//	private String strategy;
+//
+//	@Bean
+//	public boolean inicializaBancoDeDados() throws ParseException {
+//		if (!strategy.equals("create")) {
+//			return false;
+//		}
+//		dbService.inicializaBancoDeDados();
+//		return true;
+//	}
 	
 }
